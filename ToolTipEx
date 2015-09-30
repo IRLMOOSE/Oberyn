@@ -1,0 +1,47 @@
+package architecture;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+
+/**
+ * Tool Tip Window
+ * 
+ * @author Dylan
+ *
+ */
+
+public class TooltTipEx {
+
+	public ToolTipEx(Display display){
+		
+		initUI(display);
+	
+	}
+
+	private void initUI(Display display){
+		
+		Shell shell = new Shell(display, SWT.SHELL_TRIM | SWT.CENTER);
+		
+		shell.setText("Tooltip");
+		shell.setToolTipText("This is a Window");
+		shell.setSize(250, 200);
+		
+		shell.open();
+		
+		while (!shell.isDisposed()){
+			if (!display.readAndDispatch()) {
+			display.sleep();	
+			}
+		}
+	
+	}
+	
+	@SuppressWarnings("unused")
+	public static void main(String[] args) {
+		
+		Display display = new Display();
+		ToolTipEx ex = new ToolTipEx(display);
+		display.dispose();
+	}
+}
